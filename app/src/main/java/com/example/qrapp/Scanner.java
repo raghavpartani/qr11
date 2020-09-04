@@ -81,6 +81,7 @@ public class Scanner extends AppCompatActivity implements View.OnClickListener {
                     String text = (result.getText());
                     Intent intent = new Intent(getApplicationContext(),Suggestion.class);
                     intent.putExtra("MyResult", text);
+                    intent.putExtra("key","camera");
                     startActivity(intent);
 
                     }
@@ -155,6 +156,7 @@ public class Scanner extends AppCompatActivity implements View.OnClickListener {
                     Intent intent = new Intent(getApplicationContext(),Suggestion.class);
                     createImageFromBitmap(bMap);
                     intent.putExtra("MyResult", contents);
+                    intent.putExtra("key","internal");
                     startActivity(intent);
 
                   //  resultData.setText(contents);
