@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Text"
+    android:fillViewport="true">
+
+<ScrollView
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Text*"
+            android:inputType="textMultiLine"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"/>
+
+
+
+        <ImageView
+            android:id="@+id/qrcode_image"
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:layout_below="@+id/text_input"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@android:drawable/screen_background_dark_transparent" />
+
+
+
+
+        <Button
+            android:id="@+id/creare_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="create QR code"
+            android:background="@drawable/edit_button"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/qrcode_image"/>
+
+
+
+
+
+    </RelativeLayout>
+</ScrollView>
+</RelativeLayout>

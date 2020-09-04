@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Suggestion">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/qrcode_result"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                app:srcCompat="@android:drawable/screen_background_dark_transparent" />
+
+            <TextView
+                android:id="@+id/result_text"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_below="@+id/qrcode_result"
+                android:layout_marginTop="10dp"
+                android:text="Content:"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_margin="10dp"/>
+
+
+
+            <RelativeLayout
+                android:id="@+id/realtive1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_below="@+id/result_text"
+                android:layout_marginLeft="40dp">
+
+            <ImageView
+                android:id="@+id/delte_img"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_baseline_delete_forever_24"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp" />
+
+                <TextView
+                    android:id="@+id/delete_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete"
+                    android:textSize="17sp"
+                    android:textAlignment="center"
+                    android:layout_below="@+id/delte_img"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/realtive2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_below="@+id/result_text"
+                android:layout_toRightOf="@+id/realtive1"
+                android:layout_marginLeft="40dp">
+
+                <ImageView
+                    android:id="@+id/share_img"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_baseline_screen_share_24"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="3dp" />
+
+                <TextView
+                    android:id="@+id/share_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Share"
+                    android:textSize="17sp"
+                    android:textAlignment="center"
+                    android:layout_below="@+id/share_img"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/realtive3"
+                android:layout_width="92dp"
+                android:layout_height="70dp"
+                android:layout_below="@+id/result_text"
+                android:layout_toRightOf="@+id/realtive2"
+                android:layout_marginLeft="40dp">
+
+                <ImageView
+                    android:id="@+id/copy_img"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/copy_btn"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="3dp" />
+
+                <TextView
+                    android:id="@+id/copy_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Copy code"
+                    android:textSize="17sp"
+                    android:textAlignment="center"
+                    android:layout_below="@+id/copy_img"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/creare_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_button"
+                android:layout_below="@+id/realtive1"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>

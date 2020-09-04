@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".GeoLocation">
+
+<ScrollView
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/lat_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Latitude*"
+            android:inputType="text"/>
+
+
+
+        <EditText
+            android:id="@+id/long_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lat_input"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Longitude*"
+            android:inputType="text"/>
+
+        <ImageView
+            android:id="@+id/cur_location"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/long_input"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_my_location"/>
+
+
+        <Button
+            android:id="@+id/location_btn"
+            android:layout_width="208dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="120dp"
+            android:layout_toRightOf="@id/cur_location"
+            android:background="@drawable/edit_button"
+            android:text="Get Current Location"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"/>
+
+
+
+        <ImageView
+            android:id="@+id/qrcode_image"
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
+            android:layout_below="@+id/location_btn"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@android:drawable/screen_background_dark_transparent" />
+
+
+
+
+        <Button
+            android:id="@+id/creare_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/qrcode_image"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_button"
+            android:text="create QR code"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+</ScrollView>
+
+</RelativeLayout>

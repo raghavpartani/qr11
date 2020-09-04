@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">QR Code APP</string>
+
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="facebook_app_id">379028813089302</string>
+    <string name="fb_login_protocol_scheme">fb379028813089302</string>
+    <string-array name="names">
+        <item>select</item>
+        <item>Email</item>
+        <item>Phone</item>
+        <item>Text</item>
+        <item>URL</item>
+        <item>Wifi</item>
+
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Event"
+    android:fillViewport="true">
+
+<ScrollView
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/title_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title*"
+            android:inputType="text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"/>
+
+
+
+        <EditText
+            android:id="@+id/description_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:inputType="textMultiLine"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/title_input"/>
+
+        <EditText
+            android:id="@+id/location_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Location"
+            android:inputType="text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/description_input"/>
+
+        <EditText
+            android:id="@+id/organizer_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Organizer"
+            android:inputType="text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/location_input"/>
+
+
+        <EditText
+            android:id="@+id/start_date_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Start date"
+            android:inputType="datetime"
+            android:focusable="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/organizer_input"/>
+
+
+        <EditText
+            android:id="@+id/end_date_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="End date"
+            android:inputType="datetime"
+            android:focusable="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/start_date_input"/>
+
+
+
+
+        <ImageView
+            android:id="@+id/qrcode_image"
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:layout_below="@+id/end_date_input"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@android:drawable/screen_background_dark_transparent" />
+
+
+
+
+        <Button
+            android:id="@+id/creare_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="create QR code"
+            android:background="@drawable/edit_button"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/qrcode_image"/>
+
+    </RelativeLayout>
+</ScrollView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_marker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        app:cardCornerRadius="22dp"
+        app:cardBackgroundColor="#00C853"
+        app:cardElevation="6dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_expand"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

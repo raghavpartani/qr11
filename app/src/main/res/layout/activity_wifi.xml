@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Wifi">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/ssid_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="SSID*"
+                android:inputType="text" />
+
+
+            <EditText
+                android:id="@+id/password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ssid_input"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+
+            <ImageView
+                android:id="@+id/qrcode_image"
+                android:layout_width="match_parent"
+                android:layout_height="310dp"
+                android:layout_below="@+id/password_input"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@android:drawable/screen_background_dark_transparent" />
+
+
+            <Button
+                android:id="@+id/creare_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/qrcode_image"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_button"
+                android:text="create QR code"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/show_pass_btn"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_below="@+id/ssid_input"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="-57dp"
+                android:layout_marginRight="5dp"
+                android:alpha=".5"
+                android:src="@drawable/hide_password" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

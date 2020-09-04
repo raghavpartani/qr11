@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Email">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/address_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="Address*"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/subject_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/address_input"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="Subject"
+                android:inputType="text" />
+
+
+            <EditText
+                android:id="@+id/message_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/subject_input"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="Message"
+                android:inputType="textMultiLine" />
+
+            <ImageView
+                android:id="@+id/qrcode_image"
+                android:layout_width="match_parent"
+                android:layout_height="310dp"
+                android:layout_below="@+id/message_input"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@android:drawable/screen_background_dark_transparent" />
+
+
+            <Button
+                android:id="@+id/creare_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/qrcode_image"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_button"
+                android:text="create QR code"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_marker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        app:cardCornerRadius="22dp"
+        app:cardBackgroundColor="#00C853"
+        app:cardElevation="6dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_expand"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

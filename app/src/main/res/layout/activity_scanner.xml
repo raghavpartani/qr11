@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
+    tools:context=".Scanner">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <com.budiyev.android.codescanner.CodeScannerView
+        android:id="@+id/scannerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:frameAspectRatioHeight="1"
+        app:frameAspectRatioWidth="1"
+        app:frameColor="@android:color/white"
+        app:frameCornersRadius="10dp"
+        app:frameCornersSize="40dp"
+        app:frameSize="0.75"
+        app:frameThickness="2dp" />
+
+
+            <Button
+                android:id="@+id/pick_up_server"
+                android:layout_width="253dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="Scan QR code from Server"
+                android:layout_marginBottom="60dp"
+                android:background="@drawable/edit_button"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp" />
+    <Button
+        android:id="@+id/pick_up"
+        android:layout_width="253dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Scan QR code from Storage"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edit_button"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

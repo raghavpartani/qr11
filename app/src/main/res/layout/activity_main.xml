@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/qrInput"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_marginTop="7dp"
+        android:background="#32B5C7"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:drawableLeft="@drawable/round_qr_code"
+        android:drawableRight="@drawable/round_qr_code_scanner"
+        android:text="QR CODE GENERATOR AND SCANNER"
+        android:textSize="17sp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/generateBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_button"
+        android:text="Generate Qr Code"
+        android:textColor="#F3F1F3"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qrInput" />
+
+    <ImageView
+        android:id="@+id/qrPlaceHolder"
+        android:layout_width="320dp"
+        android:layout_height="340dp"
+        android:layout_marginBottom="40dp"
+       android:src="@drawable/images"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/generateBtn"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <Button
+        android:id="@+id/scanBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edit_button"
+        android:text="SCAN Qr code"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qrPlaceHolder"
+        app:layout_constraintVertical_bias="0.437" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
