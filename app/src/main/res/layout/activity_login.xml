@@ -1,145 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="@color/login_bk_color"
-    android:focusableInTouchMode="true"
-    android:gravity="center"
-    android:layout_gravity="center">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_background_login"
+    android:gravity="center_horizontal"
+    tools:context=".LoginActivity">
+
     <ScrollView
+        android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerInParent="true"
-        android:paddingTop="20dp">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="35dp">
+
         <LinearLayout
+            android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
             android:orientation="vertical"
-            android:padding="20dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentLeft="true"
-                    style="@style/viewParent.headerText.NoMode"
-                    android:text="Already \nhave an \nAccount?"/>
+            android:paddingBottom="10dp">
+
+            <requestFocus />
+
+            <com.loopeer.shadow.ShadowView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/gradient_background_login"
+                app:cornerRadius="40dp"
+                app:shadowMargin="6dp"
+                app:shadowRadius="0dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_register_hero"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"/>
-            </RelativeLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputEmail"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin">
-                <EditText
-                    android:id="@+id/editTextEmail"
-                    style="@style/modifiedEditText"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:hint="@string/login_email_hint"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputPassword"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin">
-                <EditText
-                    android:id="@+id/editTextPassword"
-                    style="@style/modifiedEditText"
-                    android:hint="@string/login_password_hint"
-                    android:maxLines="1"
-                    android:inputType="textPassword"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
-                android:id="@+id/cirLoginButton"
-                style="@style/loginButton"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/loginViewsMargin"
-                android:onClick="login"
-                android:text="Login"
-                app:initialCornerAngle="27dp"
-                app:spinning_bar_color="#FFF"
-                app:spinning_bar_padding="6dp"
-                app:spinning_bar_width="4dp" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="2dp"
+                    android:src="@drawable/greenqrlogo"
+                    app:layout_gravity="center" />
+            </com.loopeer.shadow.ShadowView>
 
             <TextView
-                style="@style/parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="serif"
+                android:text="Scan And Generate QR codes\n in single click "
                 android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@color/themeColor"
-                android:textSize="17sp"
-                android:text="New user? Register Now"
-                android:layout_marginTop="@dimen/loginViewsMargin"
-                android:onClick="onLoginClick"/>
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                tools:ignore="HardcodedText" />
 
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="12"
-                android:gravity="center"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="35dp"
+                android:textColor="@color/whiteTextColor"
+                android:textColorHint="@color/whiteTextColor">
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:layout_weight="3"/>
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/white"
+                    android:maxLines="1"
+                    android:hint="Email"
+                    android:singleLine="true"
+                
+                    android:textColor="@color/whiteTextColor"
+                    android:textColorHint="@color/whiteTextColor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/whiteTextColor"
+                android:textColorHint="@color/smokeWhite">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/editTextPassword"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/white"
+                    android:hint="Password"
+                    android:imeActionId="6"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/whiteTextColor"
+                    android:maxLines="1"
+                    android:textColorHint="@color/whiteTextColor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.loopeer.shadow.ShadowView
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="18dp"
+                android:elevation="5dp"
+                app:backgroundColor="@android:color/white"
+                app:cornerRadius="2dp"
+                app:shadowColor="@color/backgroundColor2"
+                app:shadowMargin="5dp"
+                app:shadowRadius="3dp">
 
                 <TextView
-                    style="@style/viewParent.headerText.NoMode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Use other Method"
-                    android:layout_weight="6"
-                    android:textSize="12sp"
-                    android:textAlignment="center"/>
+                    android:id="@+id/sign_in_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:onClick="login"
+                    android:text="LOGIN"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+
+                    android:textStyle="bold" />
+
+            </com.loopeer.shadow.ShadowView>
+
+
+            <!--or-->
+            <LinearLayout
+                android:id="@+id/or_layout"
+                android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:layout_weight="3"/>
+                    android:layout_width="110dp"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#b4b4b4" />
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Or"
+                    android:textColor="@color/whiteTextColor"
+                    tools:ignore="HardcodedText" />
+
+                <View
+                    android:layout_width="110dp"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#b4b4b4" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:padding="2dp">
 
-                <ImageView
-                    android:id="@+id/google"
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#ccc" />
+
+
+                <FrameLayout
+                    android:id="@+id/google_shadow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_google_plus"
-                    android:layout_marginLeft="10dp"/>
+                    android:background="@drawable/button_background2_login">
+
+                    <com.loopeer.shadow.ShadowView
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:elevation="5dp"
+                        app:cornerRadius="2dp"
+                        app:shadowColor="@color/backgroundColor2"
+                        app:shadowMargin="6dp"
+                        app:shadowRadius="2dp">
+
+                        <ImageView
+                            android:id="@+id/google"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:elevation="5dp"
+                            android:padding="3dp"
+                            android:src="@drawable/google_login"
+                            app:layout_gravity="center" />
+
+                    </com.loopeer.shadow.ShadowView>
+
+                </FrameLayout>
+
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#ccc" />
+
+
+                <FrameLayout
+                    android:id="@+id/facebook_shadow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background2_login">
+
+
+                </FrameLayout>
+
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#ccc" />
+
+
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
-    <View
-        android:layout_marginTop="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_width="11dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/ic_side_bg"/>
 
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Are you new?"
+
+            android:textColor="@color/whiteTextColor"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:onClick="openSignupPage"
+            android:padding="3dp"
+            android:text="Register"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/background_blur_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/login_loader"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        app:indicatorColor="@android:color/white"
+        app:indicatorName="BallPulseIndicator" />
 
 </RelativeLayout>
