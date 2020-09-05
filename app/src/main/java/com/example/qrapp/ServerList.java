@@ -1,25 +1,19 @@
 package com.example.qrapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -27,35 +21,36 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ServerList extends AppCompatActivity {
-    ArrayList<String> ls;
-    ArrayAdapter<String> a;
-    ListView l;
+    RecyclerView rcv;
+    ArrayList<String> lstFruit;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager mgr;
     String email;
     int i;
     ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server_list);
+        rcv = findViewById(R.id.rcv);
+
+        lstFruit = new ArrayList<>();
+        //String url1="https://qrphp.000webhostapp.com/select_for_one.php?email=raghavpartani@gmail.com";
+
 
         SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
         email = preferences.getString("email", "null");
-        String url1="https://qrphp.000webhostapp.com/select_for_one.php?email="+email;
+        String url1 = "https://qrphp.000webhostapp.com/select_for_one.php?email=" + email;
 
-        pd = new ProgressDialog(ServerList.this,R.style.MyAlertDialogStyle);
+        pd = new ProgressDialog(ServerList.this, R.style.MyAlertDialogStyle);
         pd.setTitle("Connecting Server");
         pd.setMessage("Fetching from server");
         pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         pd.show();
 
-            ls=new ArrayList<>();;
-            l=(ListView) findViewById(R.id.lst);
-            a=new ArrayAdapter<>(ServerList.this,android.R.layout.simple_list_item_1,ls);
-            l.setAdapter(a);
             JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url1, null, new Response.Listener<JSONArray>() {
                 @Override
                 public void onResponse(JSONArray response) {
@@ -69,11 +64,11 @@ public class ServerList extends AppCompatActivity {
                     for(int i=0;i<response.length();i++)
                     {
                         try {
-                            JSONObject jsonObject=response.getJSONObject(i);
-                            String name= null;
+                            JSONObject jsonObject = response.getJSONObject(i);
+                            String name = null;
                             name = jsonObject.getString("name");
-                            ls.add(name);
-                            a.notifyDataSetChanged();
+                            lstFruit.add(name);
+                            adapter.notifyDataSetChanged();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -88,8 +83,15 @@ public class ServerList extends AppCompatActivity {
                     Toast.makeText(ServerList.this, "You have not stored anything at server side or your internet is not working", Toast.LENGTH_SHORT).show();
                 }
             });
-            RequestQueue queue=Volley.newRequestQueue(ServerList.this);
-            queue.add(jsonArrayRequest);
+        RequestQueue queue = Volley.newRequestQueue(ServerList.this);
+        queue.add(jsonArrayRequest);
+        mgr = new LinearLayoutManager(ServerList.this);
+
+        rcv.setLayoutManager(mgr);
+
+        adapter = new CustomAdapter(ServerList.this, lstFruit);
+
+        rcv.setAdapter(adapter);
 //
 //        StringRequest jsonArrayRequest=new StringRequest(Request.Method.POST, url1, new Response.Listener<String>() {
 //            @Override
@@ -130,20 +132,20 @@ public class ServerList extends AppCompatActivity {
 //            queue.add(jsonArrayRequest);
 
 
-            l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    TextView tv = (TextView) view;
-                    String s="https://qrphp.000webhostapp.com/"+tv.getText().toString()+".png";
-                    //Toast.makeText(ServerList.this, ""+s, Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(ServerList.this,Suggestion.class);
-                    intent.putExtra("key","server");
-                    intent.putExtra("url",s);
-                    startActivity(intent);
-
-
-
-                }
-            });
-        }
+//            .setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    TextView tv = (TextView) view;
+//                    String s="https://qrphp.000webhostapp.com/"+tv.getText().toString()+".png";
+//                    //Toast.makeText(ServerList.this, ""+s, Toast.LENGTH_SHORT).show();
+//                    Intent intent=new Intent(ServerList.this,Suggestion.class);
+//                    intent.putExtra("key","server");
+//                    intent.putExtra("url",s);
+//                    startActivity(intent);
+//
+//
+//
+//                }
+//            });
+    }
     }

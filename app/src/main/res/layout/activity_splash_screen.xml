@@ -1,26 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--<RelativeLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".SplashScreen"-->
+<!--    android:background="@drawable/gradientbackground"-->
+<!--    android:focusableInTouchMode="true"-->
+<!--    >-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="341dp"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:src="@drawable/logo"/>-->
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="320dp"-->
+<!--        android:textAlignment="center"-->
+<!--        android:text="Scan and Generate QR code\nin a single touch"-->
+<!--        android:textColor="@color/whiteTextColor"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="17dp"/>-->
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:text="Powered By:\n\nSlogfy"-->
+<!--        android:textColor="@color/whiteTextColor"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColorHighlight="@color/whiteTextColor"-->
+<!--        android:textSize="20dp"-->
+<!--        android:textAlignment="center"-->
+
+<!--        android:layout_marginTop="600dp"-->
+<!--        />-->
+
+
+<!--</RelativeLayout>-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen"
-    android:background="@color/register_bk_color"
-    android:focusableInTouchMode="true"
-    android:gravity="center"
-    android:layout_gravity="center">
+    android:background="@drawable/gradientbackground"
+    android:orientation="vertical"
+    tools:context=".SplashScreen">
 
-
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="732dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginRight="11dp"
-        android:layout_marginBottom="0dp"
-        android:adjustViewBounds="false"
-        android:src="@drawable/logo" />
-</RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="80dp"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scan and Generate QR code\nin a single touch"
+            android:textAlignment="center"
+            android:textColor="@color/whiteTextColor"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Powered BY:"
+            android:textAlignment="center"
+            android:textColor="@color/whiteTextColor"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/slogfy" />
+
+    </LinearLayout>
+</LinearLayout>
