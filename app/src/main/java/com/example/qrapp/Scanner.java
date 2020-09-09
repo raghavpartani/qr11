@@ -102,7 +102,6 @@ public class Scanner extends AppCompatActivity implements View.OnClickListener {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select QR code"), Gallery_REQUEST_CODE);
 
-
     }
 
     @Override

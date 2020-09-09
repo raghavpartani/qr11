@@ -60,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(MainActivity.this);
         if (acct != null) {
             select=1;
-
-
             String personEmail = acct.getEmail();
             SharedPreferences pre=getSharedPreferences("login",MODE_PRIVATE);
             SharedPreferences.Editor editor=pre.edit();

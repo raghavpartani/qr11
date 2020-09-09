@@ -21,6 +21,7 @@
         android:layout_height="match_parent">
 
         <EditText
+
             android:id="@+id/first_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +29,8 @@
             android:inputType="textPersonName"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:background="@drawable/edit" />
 
         <EditText
             android:id="@+id/last_name_input"
@@ -39,7 +41,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_below="@+id/first_name_input"/>
+            android:layout_below="@+id/first_name_input"
+            android:background="@drawable/edit" />
 
 
         <EditText
@@ -51,10 +54,12 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+            android:background="@drawable/edit"
             android:layout_below="@+id/last_name_input"/>
 
 
         <EditText
+            android:background="@drawable/edit"
             android:id="@+id/email_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,6 +72,7 @@
 
 
         <EditText
+            android:background="@drawable/edit"
             android:id="@+id/phone_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,16 +87,17 @@
             android:id="@+id/ccp"
             android:layout_width="110dp"
             android:layout_height="45dp"
-            app:ccp_textSize="16sp"
+            android:layout_below="@+id/email_input"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/edit"
             android:gravity="center"
             app:ccp_autoDetectCountry="true"
             app:ccp_showNameCode="true"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/email_input"
-            />
+            app:ccp_textSize="16sp" />
 
 
         <EditText
+            android:background="@drawable/edit"
             android:id="@+id/address_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,6 +109,7 @@
             android:layout_below="@+id/phone_input"/>
 
         <EditText
+            android:background="@drawable/edit"
             android:id="@+id/city_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,6 +120,7 @@
             android:layout_marginRight="10dp"
             android:layout_below="@+id/address_input"/>
         <EditText
+            android:background="@drawable/edit"
             android:id="@+id/state_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,6 +132,7 @@
             android:layout_below="@+id/city_input"/>
 
         <EditText
+            android:background="@drawable/edit"
             android:id="@+id/country_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -134,6 +144,7 @@
             android:layout_below="@+id/state_input"/>
 
         <EditText
+            android:background="@drawable/edit"
             android:id="@+id/pincode_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -145,6 +156,7 @@
             android:layout_below="@+id/country_input"/>
 
         <EditText
+            android:background="@drawable/edit"
             android:id="@+id/url_web_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,9 +1,5 @@
 package com.example.qrapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-
 import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -17,7 +13,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,25 +23,25 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -62,6 +57,7 @@ public class Text extends AppCompatActivity implements View.OnClickListener {
     ProgressDialog pd;
     String encodedimage;
     String url = "https://qrphp.000webhostapp.com/upload.php";
+    GoogleSignInClient mGoogleSignInClient;
 
 
     EditText editText;
@@ -69,6 +65,7 @@ public class Text extends AppCompatActivity implements View.OnClickListener {
     Button button;
     Bitmap qrBits;
     String email;
+    int RC_SIGN_IN = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,13 +128,37 @@ public class Text extends AppCompatActivity implements View.OnClickListener {
                 server.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        pd = new ProgressDialog(Text.this,R.style.MyAlertDialogStyle);
-                        pd.setTitle("Connecting Server");
-                        pd.setMessage("Storing at sever");
-                        pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                        pd.show();
-                        encodedbitmap(qrBits);
-                        upload();
+//                        pd = new ProgressDialog(Text.this,R.style.MyAlertDialogStyle);
+//                        pd.setTitle("Connecting Server");
+//                        pd.setMessage("Storing at sever");
+//                        pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//                        pd.show();
+//                        encodedbitmap(qrBits);
+//                        upload();
+//                        d.cancel();
+
+                        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+                        mGoogleSignInClient = GoogleSignIn.getClient(Text.this, gso);
+                        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(Text.this);
+                        if (acct == null) {
+                            final Dialog d = new Dialog(Text.this);
+                            d.setContentView(R.layout.popuogoogleicon);
+                            ImageView google = d.findViewById(R.id.google);
+                            d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            d.show();
+                            google.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    signIn();
+                                    d.dismiss();
+                                }
+                            });
+                        } else {
+                            Upload upload = new Upload();
+                            upload.encodedbitmap(qrBits);
+                            String name = "Text:" + editText.getText().toString();
+                            upload.uploading(Text.this, name, email);
+                        }
                         d.cancel();
                     }
                 });
@@ -162,6 +183,47 @@ public class Text extends AppCompatActivity implements View.OnClickListener {
         return super.onOptionsItemSelected(item);
 
     }
+
+
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task
+            // returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
+
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            // Signed in successfully, show authenticated UI.
+            Toast.makeText(this, "You have successfully logged in now you can use our cloud services also", Toast.LENGTH_SHORT).show();
+            String personEmail = account.getEmail();
+            SharedPreferences pre = getSharedPreferences("login", MODE_PRIVATE);
+            SharedPreferences.Editor editor = pre.edit();
+            editor.putString("login", "on");
+            editor.putString("email", personEmail);
+            editor.apply();
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
+            Toast.makeText(Text.this, "Failed", Toast.LENGTH_LONG).show();
+        }
+    }
+
 
     private void deleteImage() {
         if (!isQRGenerated) {
@@ -305,46 +367,5 @@ public class Text extends AppCompatActivity implements View.OnClickListener {
                 }
             }
         }
-    }
-
-    private void upload() {
-        final String name="Text:"+editText.getText().toString();
-
-        StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                pd.dismiss();
-                Toast.makeText(Text.this, ""+response.toString(), Toast.LENGTH_SHORT).show();
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(Text.this, "Please check your internet connection.Something went wrong."+error, Toast.LENGTH_SHORT).show();
-            }
-        }
-        ){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> map=new HashMap<>();
-                map.put("t1",name);
-                map.put("upload",encodedimage);
-                map.put("email",email);
-                return map;
-            }
-        };
-
-        RequestQueue queue= Volley.newRequestQueue(getApplicationContext());
-        queue.add(request);
-    }
-
-
-
-    private void encodedbitmap(Bitmap qrBits) {
-        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
-        qrBits.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
-        byte[] imgBytes=byteArrayOutputStream.toByteArray();
-        encodedimage= Base64.encodeToString(imgBytes,Base64.DEFAULT);
     }
 }
